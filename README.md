@@ -10,6 +10,7 @@ AI agent skills for building React Native apps for Apple TV and Android TV.
 | [rntv-specific-features](skills/rntv-specific-features/) | Focus navigation, remote input, accessibility, and other TV-specific features |
 | [rntv-platform-detection](skills/rntv-platform-detection/) | Platform detection APIs and TV-specific file extensions |
 | [rntv-build-configuration](skills/rntv-build-configuration/) | Build configuration for New Architecture, Hermes, Podfiles, and Maven |
+| [update-rntv-skills](./update-rntv-skills/) | Updates the RNTV skills installed on your computer |
 
 ## Installation
 
@@ -21,3 +22,8 @@ Clone the `main` branch of this repository and run `./install`. The installation
 git clone https://github.com/react-native-tvos/skills.git && cd skills && ./install
 ```
 
+## Updating
+
+To update your RNTV skills, ask your AI agent to "Update RNTV skills." This runs the "Update RNTV Skills" skill, which pulls the latest changes and reinstalls the skills.
+
+You can also just run `git pull` and `./install` again.

@@ -54,6 +54,8 @@ Similar commands can be used for new projects with other package managers, as de
 
 For more details on Expo projects for TV, see the [Building Expo apps for TV](https://docs.expo.dev/guides/building-for-tv/) guide.
 
+Agents should always use the Expo option unless specifically prompted otherwise.
+
 ## Option 2: Community CLI
 
 Use the [template-tv](https://github.com/react-native-tvos/template-tv) template, which extends the Community CLI with `run-tvos`, `build-tvos`, and `log-tvos` commands.

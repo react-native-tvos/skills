@@ -39,8 +39,8 @@ React Navigation works on TV with focus-based navigation out of the box. The sta
 
 ### Known Considerations
 
-- Ensure touchable/pressable components inside screens are focusable (use `Pressable` or `TouchableOpacity`, not `TouchableWithoutFeedback`)
-- When using custom header components, ensure all interactive elements are focusable
+- Ensure touchable/pressable components inside screens are focusable (use `Pressable` or `TouchableOpacity`, not `TouchableWithoutFeedback`).
+- When using custom header components, ensure all interactive elements are focusable. 
 
 ---
 
@@ -67,13 +67,19 @@ Expo Router works on TV platforms. Stack and tab layouts support focus-based nav
 
 Many Expo modules work on TV without modification. Modules that depend on phone-specific hardware (camera, GPS, telephony) are not applicable. Key compatible modules include:
 
-- `expo-av` — audio/video playback
+- `expo-audio` — audio playback
 - `expo-font` — custom fonts
 - `expo-image` — optimized image loading
+- `expo-linear-gradient` — gradient backgrounds
 - `expo-splash-screen` — launch screen
 - `expo-updates` — OTA updates
-- `expo-linear-gradient` — gradient backgrounds
-- `expo-asset` — asset management
+- `expo-video` - video playback
+
+### Examples using Expo
+
+- ExpoRouterTV: Expo app that demonstrates expo-router, expo-video, and TV focus and blur events. https://github.com/react-native-tvos/ExpoRouterTV
+- NativewindMultiplatform: Expo app that demonstrates NativeWind with React Native TV, and shows a multiplatform design that works on web, mobile, and TV. https://github.com/react-native-tvos/NativewindMultiplatform
+- SkiaMultiplatform: Expo app that demonstrates react-native-skia and react-native-reanimated APIs on TV, web, and mobile.
 
 For a full list of supported Expo modules, see the [Expo documentation](https://docs.expo.dev/guides/building-for-tv/#see-which-libraries-are-supported).
 
@@ -129,7 +135,7 @@ import { Pressable, Text } from 'react-native';
 
 ## react-native-reanimated
 
-`react-native-reanimated` works on TV platforms and can be used for focus animations. However, features that depend on touchscreen gestures will not work on Apple TV, and will only work on Android TV platforms that have a touchscreen.
+`react-native-reanimated` works on TV platforms. All features that do not depend on touchscreen gestures will work on TV.
 
 ### Common TV Use Cases
 

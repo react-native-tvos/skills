@@ -10,6 +10,7 @@ AI agent skills for building React Native apps for Apple TV and Android TV.
 | [rntv-specific-features](skills/rntv-specific-features/) | Focus navigation, remote input, accessibility, and other TV-specific features |
 | [rntv-platform-detection](skills/rntv-platform-detection/) | Platform detection APIs and TV-specific file extensions |
 | [rntv-build-configuration](skills/rntv-build-configuration/) | Build configuration for New Architecture, Hermes, Podfiles, and Maven |
+| [rntv-third-party](skills/rntv-third-party/) | TV features in third-party packages (Expo packages, react-native-reanimated, Nativewind/Tailwind, etc.) |
 | [update-rntv-skills](./update-rntv-skills/) | Updates the RNTV skills installed on your computer |
 
 ## Installation

@@ -75,10 +75,95 @@ Many Expo modules work on TV without modification. Modules that depend on phone-
 - `expo-updates` — OTA updates
 - `expo-video` - video playback
 
+### expo-video on TV
+
+`expo-video` works on TV platforms. Here is a complete video player component with custom TV-focusable controls:
+
+```tsx
+import { useVideoPlayer, VideoView } from 'expo-video';
+import React, { useCallback, useRef, useState } from 'react';
+import { Pressable, StyleSheet, Text, TVFocusGuideView, View } from 'react-native';
+
+const videoSource =
+  'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
+
+function ControlButton({ title, onPress }: { title: string; onPress: () => void }) {
+  return (
+    <Pressable
+      onPress={onPress}
+      style={({ pressed, focused }) => [
+        styles.button,
+        (pressed || focused) && styles.buttonFocused,
+      ]}
+    >
+      <Text style={styles.buttonText}>{title}</Text>
+    </Pressable>
+  );
+}
+
+export default function VideoPlayer() {
+  const ref = useRef<VideoView>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+
+  const player = useVideoPlayer(videoSource, (p) => {
+    p.loop = true;
+  });
+
+  React.useEffect(() => {
+    const subscription = player.addListener('playingChange', (event) => {
+      setIsPlaying(event.isPlaying);
+    });
+    return () => subscription.remove();
+  }, [player]);
+
+  return (
+    <View style={styles.container}>
+      <VideoView
+        ref={ref}
+        player={player}
+        style={styles.video}
+        nativeControls={isFullscreen}
+        contentFit="contain"
+        onFullscreenEnter={() => setIsFullscreen(true)}
+        onFullscreenExit={() => setIsFullscreen(false)}
+      />
+      <TVFocusGuideView autoFocus>
+        <View style={styles.controls}>
+          <ControlButton title="Rewind" onPress={() => { player.currentTime = 0; }} />
+          <ControlButton title="-10s" onPress={() => { player.currentTime = Math.max(0, player.currentTime - 10); }} />
+          <ControlButton
+            title={isPlaying ? 'Pause' : 'Play'}
+            onPress={() => { player.playing ? player.pause() : player.play(); }}
+          />
+          <ControlButton title="+10s" onPress={() => { player.currentTime = Math.min(player.duration, player.currentTime + 10); }} />
+          <ControlButton title="Fullscreen" onPress={() => { ref.current?.enterFullscreen(); }} />
+        </View>
+      </TVFocusGuideView>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: { flex: 1, backgroundColor: '#000', justifyContent: 'center', alignItems: 'center' },
+  video: { width: '80%', aspectRatio: 16 / 9 },
+  controls: { flexDirection: 'row', justifyContent: 'center', marginTop: 24 },
+  button: { backgroundColor: 'rgba(255,255,255,0.2)', borderRadius: 12, paddingHorizontal: 24, paddingVertical: 16, marginHorizontal: 8 },
+  buttonFocused: { backgroundColor: '#2563eb' },
+  buttonText: { color: '#fff', fontSize: 18, fontWeight: '600', textAlign: 'center' },
+});
+```
+
+Key points for expo-video on TV:
+- Wrap controls in `TVFocusGuideView` with `autoFocus` so the focus engine finds them
+- Use `nativeControls={isFullscreen}` to show native controls only in fullscreen (where custom buttons aren't visible)
+- All control buttons must be `Pressable` to receive TV focus
+- Use `player.currentTime` for seeking and `player.playing` / `player.pause()` / `player.play()` for playback control
+
 ### Examples using Expo
 
-- ExpoRouterTV: Expo app that demonstrates expo-router, expo-video, and TV focus and blur events. https://github.com/react-native-tvos/ExpoRouterTV
-- NativewindMultiplatform: Expo app that demonstrates NativeWind with React Native TV, and shows a multiplatform design that works on web, mobile, and TV. https://github.com/react-native-tvos/NativewindMultiplatform
+- [ExpoRouterTV](https://github.com/react-native-tvos/ExpoRouterTV): Expo app that demonstrates expo-router, expo-video, and TV focus and blur events.
+- [NativewindMultiplatform](https://github.com/react-native-tvos/NativewindMultiplatform): Expo app that demonstrates NativeWind with React Native TV, and shows a multiplatform design that works on web, mobile, and TV.
 - SkiaMultiplatform: Expo app that demonstrates react-native-skia and react-native-reanimated APIs on TV, web, and mobile.
 
 For a full list of supported Expo modules, see the [Expo documentation](https://docs.expo.dev/guides/building-for-tv/#see-which-libraries-are-supported).
@@ -105,11 +190,97 @@ New native modules created with `create-expo-module` are automatically configure
 - Handle `onEnd` and `onError` to navigate back or show appropriate UI
 - For custom controls, ensure all buttons are `Pressable` so they receive TV focus
 
+> **Note:** For Expo projects, prefer `expo-video` over `react-native-video`. See the expo-video example in the [Expo and Expo Router](#expo-and-expo-router) section above for a complete TV video player implementation.
+
 ---
 
 ## NativeWind / Tailwind CSS
 
-NativeWind (Tailwind CSS for React Native) supports TV focus states.
+NativeWind v4 (Tailwind CSS for React Native) supports TV focus states. Below is the complete setup for an Expo TV project.
+
+### Installation
+
+```sh
+yarn add nativewind@^4.2.0
+yarn add --dev tailwindcss@^3.4.15
+```
+
+### Configuration Files
+
+**metro.config.js** — wrap the default config with `withNativeWind`:
+
+```javascript
+const { getDefaultConfig } = require('expo/metro-config');
+const { withNativeWind } = require('nativewind/metro');
+
+const config = getDefaultConfig(__dirname);
+
+module.exports = withNativeWind(config, {
+  input: './global.css',
+});
+```
+
+**babel.config.js** — add the NativeWind babel preset and JSX import source:
+
+```javascript
+module.exports = function (api) {
+  api.cache(true);
+  return {
+    presets: [
+      ['babel-preset-expo', { jsxImportSource: 'nativewind' }],
+      'nativewind/babel',
+    ],
+    plugins: [],
+  };
+};
+```
+
+**tailwind.config.js** — use the NativeWind preset:
+
+```javascript
+module.exports = {
+  darkMode: 'class',
+  content: [
+    'app/**/*.{js,jsx,ts,tsx}',
+    'components/**/*.{js,jsx,ts,tsx}',
+  ],
+  presets: [require('nativewind/preset')],
+  plugins: [],
+  theme: {},
+};
+```
+
+> Adjust the `content` paths to match your project structure (e.g., `src/app/**/*.{js,jsx,ts,tsx}` if using a `src` directory).
+
+**global.css** — standard Tailwind directives:
+
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+**nativewind-env.d.ts** — TypeScript type declarations (at project root):
+
+```typescript
+/// <reference types="nativewind/types" />
+```
+
+**Root layout** — import the CSS at the top of your root layout file:
+
+```tsx
+import './global.css'; // or '@/global.css' if using path aliases
+
+import { Stack } from 'expo-router';
+
+export default function RootLayout() {
+  return (
+    <Stack screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="index" />
+    </Stack>
+  );
+}
+```
 
 ### Focus Styles
 
@@ -123,13 +294,43 @@ import { Pressable, Text } from 'react-native';
 </Pressable>;
 ```
 
+### Complete TV Control Button Example with NativeWind
+
+```tsx
+import { Pressable, Text, TVFocusGuideView, View } from 'react-native';
+
+function ControlButton({ label, onPress }: { label: string; onPress: () => void }) {
+  return (
+    <Pressable
+      onPress={onPress}
+      className="bg-white/20 focus:bg-blue-600 active:bg-blue-800 rounded-xl px-6 py-4 mx-2"
+    >
+      <Text className="text-white text-xl font-semibold text-center">{label}</Text>
+    </Pressable>
+  );
+}
+
+// Wrap a row of buttons in TVFocusGuideView for proper TV focus management
+function ButtonRow() {
+  return (
+    <TVFocusGuideView autoFocus trapFocusUp trapFocusDown>
+      <View className="flex-row items-center justify-center mt-8">
+        <ControlButton label="Back" onPress={() => {}} />
+        <ControlButton label="Play" onPress={() => {}} />
+        <ControlButton label="Next" onPress={() => {}} />
+      </View>
+    </TVFocusGuideView>
+  );
+}
+```
+
 ### Best Practices
 
 - Use `focus:` for visual focus indicators — this is essential for TV usability
 - Combine with `active:` for press state feedback on select button press
 - Ensure sufficient contrast between focused and unfocused states for 10-foot UI readability
 - Use larger text sizes and padding for TV — Tailwind's `text-2xl`+ and `p-6`+ are good starting points
-- See [this example](https://github.com/react-native-tvos/NativewindMultiplatform) that uses NativeWind v4.
+- See the [NativewindMultiplatform](https://github.com/react-native-tvos/NativewindMultiplatform) example for a complete multiplatform app using NativeWind v4
 
 ---
 

@@ -1,6 +1,6 @@
 ---
-name: rntv-build-configuration
-description: Use when configuring build settings for React Native TV apps, including New Architecture (Fabric) setup, Hermes JS engine, Apple TV Podfile configuration, Android TV Maven artifacts, or the precompiled iOS/tvOS framework.
+name: React Native TV build configuration
+description: Use when configuring build settings for React Native TV apps, including Apple TV Podfile configuration, Android TV Maven artifacts, or the precompiled iOS/tvOS framework.
 version: 1.0.0
 license: MIT
 ---

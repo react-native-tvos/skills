@@ -1,6 +1,6 @@
 ---
-name: rntv-third-party
-description: Use when working with third-party packages in React Native TV apps, including React Navigation TV support, react-native-video TV features, Expo TV support, NativeWind/Tailwind TV focus styles, and other community package TV compatibility considerations.
+name: React Native TV third-party packages
+description: Use when working with third-party packages in React Native TV apps, including Expo packages, React Navigation TV support, NativeWind/Tailwind TV focus styles, and other community package TV compatibility considerations.
 version: 1.0.0
 license: MIT
 ---

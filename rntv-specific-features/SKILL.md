@@ -1,5 +1,5 @@
 ---
-name: rntv-specific-features
+name: React Native TV-specific features
 description: Use when implementing TV-specific features including focus-based navigation, TVFocusGuideView, focus trapping, Pressable/Touchable focus events, VirtualizedList TV focus, nextFocus direction props, TV remote control input, TVEventHandler, useTVEventHandler, TVEventControl, Apple TV Siri remote configuration, accessibility on TV, or LogBox on TV.
 version: 1.0.0
 license: MIT

@@ -1,0 +1,17 @@
+{
+  "name": "rntv-plugins",
+  "owner": {
+    "name": "RNTV Team",
+    "url": "https://github.com/react-native-tvos/react-native-tvos"
+  },
+  "metadata": {
+    "description": "Official React Native TV plugins for Claude Code"
+  },
+  "plugins": [
+    {
+      "name": "react-native-tvos",
+      "source": "./plugins/react-native-tvos",
+      "description": "Skills for building React Native apps for Apple TV and Android TV using react-native-tvos."
+    }
+  ]
+}

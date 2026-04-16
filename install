@@ -2,11 +2,12 @@
 set -euo pipefail
 
 repo_dir="$(cd "$(dirname "$0")" && pwd)"
+skills_source="$repo_dir/plugins/react-native-tvos/skills"
 skills_target="$HOME/.claude/skills"
 
 mkdir -p "$skills_target"
 
-for skill_md in "$repo_dir"/*/SKILL.md; do
+for skill_md in "$skills_source"/*/SKILL.md; do
   skill_dir="$(dirname "$skill_md")"
   skill_name="$(basename "$skill_dir")"
 

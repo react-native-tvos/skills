@@ -1,7 +1,7 @@
 ---
-name: Update RNTV Skills
+name: update-skills
 description: Updates the RNTV skills installed on your computer. Supports switching between stable and main release branches.
-allowed-tools: "Bash(**/update-skills/scripts/update.sh:*)"
+allowed-tools: 'Bash(**/update-skills/scripts/update.sh:*)'
 version: 1.0.0
 license: MIT License
 ---

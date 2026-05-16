@@ -1,5 +1,5 @@
 ---
-name: React Native TV project creation
+name: project-create
 description: Use when creating a new React Native TV project for Apple TV or Android TV, setting up package.json for react-native-tvos, or choosing between Expo and Community CLI for TV development.
 version: 1.0.0
 license: MIT
@@ -35,6 +35,7 @@ You **cannot** use this package and the core `react-native` package simultaneous
 ## Versioning
 
 Releases follow the `0.xx.x-y` format:
+
 - `x` digits correspond to the upstream React Native core release (e.g., `0.81.0`)
 - `y` is the additional version number from this repo (e.g., `0.81.0-0`)
 
@@ -83,9 +84,9 @@ We strongly recommend [Yarn](https://classic.yarnpkg.com/en/docs/install) as the
 
 ## Minimum OS Versions
 
-| Platform | Minimum Version |
-|---|---|
-| iPhone and iPad | iOS 15.1 |
-| Apple TV | tvOS 15.1 |
-| Android / Android TV (0.77 releases) | API level 22 |
-| Android / Android TV (0.78+) | API level 24 |
+| Platform                             | Minimum Version |
+| ------------------------------------ | --------------- |
+| iPhone and iPad                      | iOS 15.1        |
+| Apple TV                             | tvOS 15.1       |
+| Android / Android TV (0.77 releases) | API level 22    |
+| Android / Android TV (0.78+)         | API level 24    |

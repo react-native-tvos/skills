@@ -1,5 +1,5 @@
 ---
-name: React Native TV third-party packages
+name: third-party
 description: Use when working with third-party packages in React Native TV apps, including Expo packages, React Navigation TV support, NativeWind/Tailwind TV focus styles, and other community package TV compatibility considerations.
 version: 1.0.0
 license: MIT
@@ -40,7 +40,7 @@ React Navigation works on TV with focus-based navigation out of the box. The sta
 ### Known Considerations
 
 - Ensure touchable/pressable components inside screens are focusable (use `Pressable` or `TouchableOpacity`, not `TouchableWithoutFeedback`).
-- When using custom header components, ensure all interactive elements are focusable. 
+- When using custom header components, ensure all interactive elements are focusable.
 
 ---
 

@@ -1,5 +1,5 @@
 ---
-name: React Native TV build configuration
+name: build-configuration
 description: Use when configuring build settings for React Native TV apps, including Apple TV Podfile configuration, Android TV Maven artifacts, or the precompiled iOS/tvOS framework.
 version: 1.0.0
 license: MIT
@@ -52,8 +52,8 @@ Starting with 0.81.0-0, a precompiled framework for the React Native core librar
 ### Dependencies
 
 Builds using the precompiled framework also require:
+
 - **ReactNativeDependencies framework** — built automatically for iOS and tvOS, included in releases
 - **Hermes engine framework** — built automatically for iOS and tvOS, included in releases
 
 Both are included in React Native core releases and are not separately distributed.
-

@@ -1,5 +1,5 @@
 ---
-name: React Native TV-specific features
+name: specific-features
 description: Use when implementing TV-specific features including focus-based navigation, TVFocusGuideView, focus trapping, Pressable/Touchable focus events, VirtualizedList TV focus, nextFocus direction props, TV remote control input, TVEventHandler, useTVEventHandler, TVEventControl, Apple TV Siri remote configuration, accessibility on TV, or LogBox on TV.
 version: 1.0.0
 license: MIT
@@ -34,14 +34,14 @@ license: MIT
 
 TV focus events work natively on `Pressable`, `TouchableHighlight`, and `TouchableOpacity`. These components "just work" on both Apple TV and Android TV:
 
-| Event | When it fires |
-|---|---|
-| `onFocus()` | View gains focus |
-| `onBlur()` | View loses focus |
-| `onPress()` | "Select" button pressed (center button on remote/DPad) |
-| `onPressIn()` | "Select" button pressed down |
-| `onPressOut()` | "Select" button released |
-| `onLongPress()` | "Select" button held down |
+| Event           | When it fires                                          |
+| --------------- | ------------------------------------------------------ |
+| `onFocus()`     | View gains focus                                       |
+| `onBlur()`      | View loses focus                                       |
+| `onPress()`     | "Select" button pressed (center button on remote/DPad) |
+| `onPressIn()`   | "Select" button pressed down                           |
+| `onPressOut()`  | "Select" button released                               |
+| `onLongPress()` | "Select" button held down                              |
 
 > `TouchableNativeFeedback` and `TouchableWithoutFeedback` respond to press events but **not** focus/blur. They are not recommended for TV.
 
@@ -57,15 +57,15 @@ Provides support for Apple's `UIFocusGuide` API, implemented identically on Andr
 
 #### Props
 
-| Prop | Type | Description |
-|---|---|---|
-| `destinations` | `any[]?` | Array of components to register as focus destinations |
-| `autoFocus` | `boolean?` | Automatically manages focus — redirects to first focusable child on first visit, remembers last focused child on subsequent visits. `destinations` takes precedence. |
-| `focusable` | `boolean?` | When `false`, this view and all subviews become non-focusable |
-| `trapFocusUp` | `boolean?` | Prevents focus from escaping upward |
-| `trapFocusDown` | `boolean?` | Prevents focus from escaping downward |
-| `trapFocusLeft` | `boolean?` | Prevents focus from escaping left |
-| `trapFocusRight` | `boolean?` | Prevents focus from escaping right |
+| Prop             | Type       | Description                                                                                                                                                          |
+| ---------------- | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `destinations`   | `any[]?`   | Array of components to register as focus destinations                                                                                                                |
+| `autoFocus`      | `boolean?` | Automatically manages focus — redirects to first focusable child on first visit, remembers last focused child on subsequent visits. `destinations` takes precedence. |
+| `focusable`      | `boolean?` | When `false`, this view and all subviews become non-focusable                                                                                                        |
+| `trapFocusUp`    | `boolean?` | Prevents focus from escaping upward                                                                                                                                  |
+| `trapFocusDown`  | `boolean?` | Prevents focus from escaping downward                                                                                                                                |
+| `trapFocusLeft`  | `boolean?` | Prevents focus from escaping left                                                                                                                                    |
+| `trapFocusRight` | `boolean?` | Prevents focus from escaping right                                                                                                                                   |
 
 #### Example
 
@@ -79,7 +79,7 @@ import { TVFocusGuideView } from 'react-native';
   <Pressable onPress={() => {}}>
     <Text>Item 2</Text>
   </Pressable>
-</TVFocusGuideView>
+</TVFocusGuideView>;
 ```
 
 ### Next Focus Direction Props
@@ -94,8 +94,8 @@ VirtualizedList is extended for TV focus management. All improvements apply auto
 
 **Defaults:** VirtualizedList contents are automatically wrapped with a `TVFocusGuideView` with `trapFocus*` properties enabled based on list orientation. This prevents focus from accidentally leaving the list due to virtualization until reaching the beginning or end.
 
-| Prop | Type | Description |
-|---|---|---|
+| Prop                      | Type                                | Description                                                                                                                                                                                                 |
+| ------------------------- | ----------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `additionalRenderRegions` | `{first: number; last: number;}[]?` | Defines always-rendered regions not subject to virtualization. Useful for preventing blank areas in critical list sections. Regions are specified as index ranges and rendered lazily after initial render. |
 
 ### TVTextScrollView
@@ -126,7 +126,7 @@ import { useTVEventHandler } from 'react-native';
 const TVEventHandlerView = () => {
   const [lastEventType, setLastEventType] = React.useState('');
 
-  useTVEventHandler(evt => {
+  useTVEventHandler((evt) => {
     setLastEventType(evt.eventType);
   });
 
@@ -134,8 +134,8 @@ const TVEventHandlerView = () => {
     <View>
       <TouchableOpacity onPress={() => {}}>
         <Text>
-          This example shows the last event detected from the
-          Apple TV Siri remote or keyboard.
+          This example shows the last event detected from the Apple TV Siri
+          remote or keyboard.
         </Text>
       </TouchableOpacity>
       <Text style={{ color: 'blue' }}>{lastEventType}</Text>
@@ -188,6 +188,7 @@ class Game2048 extends React.Component {
 ### Event Types
 
 Common `eventType` values from TV remote events:
+
 - `up`, `down`, `left`, `right` — directional navigation
 - `select` — center/select button
 - `playPause` — play/pause button (Apple TV)
@@ -224,7 +225,7 @@ See `TVEventHandlerExample` in the RNTester app for a demo.
 Control whether gesture handlers in `RCTTVRemoteHandler` cancel touches:
 
 ```javascript
-TVEventControl.enableGestureHandlersCancelTouches();   // default in 0.69 and earlier
+TVEventControl.enableGestureHandlersCancelTouches(); // default in 0.69 and earlier
 TVEventControl.disableGestureHandlersCancelTouches();
 ```
 

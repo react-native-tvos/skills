@@ -19,10 +19,10 @@ license: MIT
 
 ## When NOT to Use
 
-- Core React Native TV features (focus, remote input) — use the `rntv-specific-features` skill instead
-- Platform detection — use the `rntv-platform-detection` skill instead
-- Build configuration — use the `rntv-build-configuration` skill instead
-- Creating a new project — use the `rntv-project-create` skill instead
+- Core React Native TV features (focus, remote input) — use the `specific-features` skill instead
+- Platform detection — use the `platform-detection` skill instead
+- Build configuration — use the `build-configuration` skill instead
+- Creating a new project — use the `project-create` skill instead
 
 ---
 
@@ -50,7 +50,7 @@ As of Expo SDK 52 and later, Expo supports TV targets (Apple TV and Android TV) 
 
 ### Setup
 
-- Use the Expo project create workflow from the `rntv-project-create` skill
+- Use the Expo project create workflow from the `project-create` skill
 - TV support requires the `@react-native-tvos/config-tv` plugin to be added as a dependency and in the Expo config
 
 ### Expo Router on TV

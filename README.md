@@ -6,12 +6,12 @@ AI agent skills for building React Native apps for Apple TV and Android TV using
 
 | Skill | Description |
 |---|---|
-| [rntv-project-create](./plugins/react-native-tvos/skills/rntv-project-create/) | Creating new TV projects with Expo or Community CLI |
-| [rntv-specific-features](./plugins/react-native-tvos/skills/rntv-specific-features/) | Focus navigation, remote input, accessibility, and other TV-specific features |
-| [rntv-platform-detection](./plugins/react-native-tvos/skills/rntv-platform-detection/) | Platform detection APIs and TV-specific file extensions |
-| [rntv-build-configuration](./plugins/react-native-tvos/skills/rntv-build-configuration/) | Build configuration for New Architecture, Hermes, Podfiles, and Maven |
-| [rntv-third-party](./plugins/react-native-tvos/skills/rntv-third-party/) | TV features in third-party packages (Expo, react-native-reanimated, Nativewind/Tailwind, etc.) |
-| [update-rntv-skills](./plugins/react-native-tvos/skills/update-rntv-skills/) | Updates the RNTV skills installed on your computer |
+| [project-create](./plugins/rntv/skills/project-create/) | Creating new TV projects with Expo or Community CLI |
+| [specific-features](./plugins/rntv/skills/specific-features/) | Focus navigation, remote input, accessibility, and other TV-specific features |
+| [platform-detection](./plugins/rntv/skills/platform-detection/) | Platform detection APIs and TV-specific file extensions |
+| [build-configuration](./plugins/rntv/skills/build-configuration/) | Build configuration for New Architecture, Hermes, Podfiles, and Maven |
+| [third-party](./plugins/rntv/skills/third-party/) | TV features in third-party packages (Expo, react-native-reanimated, Nativewind/Tailwind, etc.) |
+| [update-skills](./plugins/rntv/skills/update-skills/) | Updates the RNTV skills installed on your computer |
 
 ## Installation
 
@@ -26,7 +26,7 @@ Add the marketplace:
 Install the plugin:
 
 ```
-/plugin install react-native-tvos
+/plugin install rntv
 ```
 
 ### Cursor

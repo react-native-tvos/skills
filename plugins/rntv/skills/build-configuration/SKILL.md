@@ -17,7 +17,7 @@ license: MIT
 
 ## When NOT to Use
 
-- Creating a new project from scratch — use the `rntv-project-create` skill instead
+- Creating a new project from scratch — use the `project-create` skill instead
 
 ## Hermes JS Engine
 

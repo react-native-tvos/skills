@@ -22,9 +22,9 @@ license: MIT
 
 ## When NOT to Use
 
-- Platform detection — use the `rntv-platform-detection` skill instead
-- Build configuration — use the `rntv-build-configuration` skill instead
-- Creating a new project — use the `rntv-project-create` skill instead
+- Platform detection — use the `platform-detection` skill instead
+- Build configuration — use the `build-configuration` skill instead
+- Creating a new project — use the `project-create` skill instead
 
 ---
 

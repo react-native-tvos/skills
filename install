@@ -2,7 +2,7 @@
 set -euo pipefail
 
 repo_dir="$(cd "$(dirname "$0")" && pwd)"
-skills_source="$repo_dir/plugins/react-native-tvos/skills"
+skills_source="$repo_dir/plugins/rntv/skills"
 skills_target="$HOME/.claude/skills"
 
 mkdir -p "$skills_target"

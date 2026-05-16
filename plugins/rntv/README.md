@@ -9,7 +9,7 @@ AI agent skills for building React Native apps for Apple TV and Android TV using
 - Explains platform detection and TV-specific file extensions
 - Documents build configuration for New Architecture, Hermes, Podfiles, and Maven
 - Covers third-party package compatibility (Expo, react-native-reanimated, NativeWind/Tailwind)
-- Provides self-updating functionality via the `update-rntv-skills` skill
+- Provides self-updating functionality via the `update-skills` skill
 
 ## When to Use
 
@@ -21,12 +21,12 @@ AI agent skills for building React Native apps for Apple TV and Android TV using
 
 ## Skills Included
 
-- **rntv-project-create** — Create new TV projects with Expo or Community CLI
-- **rntv-specific-features** — Focus navigation, TV remote input, TVFocusGuideView, accessibility
-- **rntv-platform-detection** — Platform detection APIs and TV-specific file extensions
-- **rntv-build-configuration** — New Architecture, Hermes, Podfile, and Maven configuration
-- **rntv-third-party** — TV compatibility for Expo packages, Reanimated, NativeWind, and more
-- **update-rntv-skills** — Update installed RNTV skills from GitHub
+- **project-create** — Create new TV projects with Expo or Community CLI
+- **specific-features** — Focus navigation, TV remote input, TVFocusGuideView, accessibility
+- **platform-detection** — Platform detection APIs and TV-specific file extensions
+- **build-configuration** — New Architecture, Hermes, Podfile, and Maven configuration
+- **third-party** — TV compatibility for Expo packages, Reanimated, NativeWind, and more
+- **update-skills** — Update installed RNTV skills from GitHub
 
 ## License
 
